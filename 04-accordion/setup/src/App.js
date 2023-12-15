@@ -4,7 +4,6 @@ import SingleQuestion from './Question';
 function App() {
   const [dataPoint, setDataPoint] = useState(data)
   // const elem
-  console.log(dataPoint)
   // const elem = dataPoint.map(console.log(`boi`))
   return (
     <main>

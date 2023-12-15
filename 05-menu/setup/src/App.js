@@ -1,11 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Menu from './Menu';
 import Categories from './Categories';
 import items from './data';
 
 function App() {
   const [menuItems, setMenuItems] = useState(items)
-  const [categories, setCategories] = useState([])
+  const [active, setActive] = useState({})
+  useEffect(()=> {
+    const uc = uniqueCategories()
+    const stateGen = {}
+    uc.forEach(elem => stateGen[elem] = false)
+    setActive(stateGen)
+
+  },[])
+  const toggleActive=(str)=> {
+    for (const elem in active) {
+      active[elem] = elem === str ? !active[elem] :active[elem] 
+    }
+  }
   const uniqueCategories =()=> {
     const set = new Set()
     items.map(item=> set.add(item.category))
@@ -13,8 +25,10 @@ function App() {
   }
   const catSend = uniqueCategories()
   const filterItems =(str)=> {
+    const ifBool = Object.values(active).every(elem => !elem)
     const filteredItem = items.filter(item => item.category === str )
     setMenuItems(filteredItem)
+    console.log(ifBool)
   }
   return(
     <main>
