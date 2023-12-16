@@ -61,3 +61,7 @@
 21. Movie DB
 22. Hacker News
 23. Quiz
+
+
+## Sources 
+[clear iNterval](https://developer.mozilla.org/en-US/docs/Web/API/clearInterval)
